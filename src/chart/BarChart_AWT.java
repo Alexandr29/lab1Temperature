@@ -12,8 +12,10 @@ import javax.swing.*;
 
 public class BarChart_AWT extends JPanel {
 
-    public BarChart_AWT(String chartTitle, StockData stockData, int year) {
+    public BarChart_AWT( ) {
 
+    }
+    public void createChart(String chartTitle, StockData stockData, int year){
         JFreeChart barChart = ChartFactory.createBarChart(
                 chartTitle,
                 "Months",
@@ -21,7 +23,6 @@ public class BarChart_AWT extends JPanel {
                 createDataSet(stockData,year),
                 PlotOrientation.VERTICAL,
                 true, true, false);
-
         ChartPanel chartPanel = new ChartPanel( barChart );
         chartPanel.repaint();
         chartPanel.setPreferredSize(new java.awt.Dimension( 800 ,800  ) );
@@ -51,6 +52,8 @@ public class BarChart_AWT extends JPanel {
                     arr1[9] = stockData.getRecordNumber(year-1880).getOct();
                     arr1[10] = stockData.getRecordNumber(year-1880).getNov();
                     arr1[11] = stockData.getRecordNumber(year-1880).getDec();
+
+
 
                 for (int i = 0; i < 12; i++) {
                     dataSet.addValue(arr1[i],arr2[i], speed);

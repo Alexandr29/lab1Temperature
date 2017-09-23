@@ -16,9 +16,9 @@ public class StockData {
         return records.get(i);
     }
 
-    public int getNumberOfRecords(){
-        return records.size();
-    }
+    //public int getNumberOfRecords(){
+    //    return records.size();
+    //}
 
     public void loadDataFrmFile(String filePath) {
         try {

@@ -5,23 +5,36 @@
       <xy x="20" y="20" width="500" height="400"/>
     </constraints>
     <properties/>
-    <border type="none"/>
+    <border type="bevel-raised">
+      <font size="15"/>
+    </border>
     <children>
-      <grid id="e4571" binding="topPanel" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="2">
+      <grid id="e4571" binding="topPanel" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
         <constraints border-constraint="North"/>
-        <properties/>
-        <border type="bevel-raised"/>
+        <properties>
+          <background color="-13884383"/>
+        </properties>
+        <border type="bevel-raised" title="Введите данные" title-justification="1">
+          <font size="16" style="2"/>
+          <title-color color="-2141408"/>
+        </border>
         <children>
           <component id="6a7e2" class="javax.swing.JFormattedTextField" binding="setYearField">
             <constraints/>
             <properties>
+              <background color="-5725793"/>
               <columns value="10"/>
-              <text value="set Year"/>
+              <font size="25"/>
+              <foreground color="-1"/>
+              <text value="Введите год"/>
             </properties>
           </component>
           <component id="63aba" class="javax.swing.JButton" binding="startButton">
             <constraints/>
             <properties>
+              <background color="-13092808"/>
+              <font size="25"/>
+              <foreground color="-1"/>
               <text value="Start"/>
             </properties>
           </component>

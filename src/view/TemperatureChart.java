@@ -31,8 +31,4 @@ public class TemperatureChart extends JFrame{
     public JButton getStartButton() {
         return startButton;
     }
-
-    public JPanel getCenterPanel() {
-        return centerPanel;
-    }
 }

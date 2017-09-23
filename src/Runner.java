@@ -6,13 +6,6 @@ public class Runner {
         MainFrameController mainFrameController = new MainFrameController();
         mainFrameController.showFrame();
 
-
-
-
-
-        //data.StockData stockData = new data.StockData();
-        //stockData.loadDataFrmFile("data.csv");
-        //System.out.println(stockData.getNumberOfRecords());
     }
 
 }
