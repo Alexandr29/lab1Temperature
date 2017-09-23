@@ -12,11 +12,11 @@
       <grid id="e4571" binding="topPanel" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
         <constraints border-constraint="North"/>
         <properties>
-          <background color="-13884383"/>
+          <background color="-14145496"/>
         </properties>
         <border type="bevel-raised" title="Введите данные" title-justification="1">
           <font size="16" style="2"/>
-          <title-color color="-2141408"/>
+          <title-color color="-906176"/>
         </border>
         <children>
           <component id="6a7e2" class="javax.swing.JFormattedTextField" binding="setYearField">
@@ -35,25 +35,34 @@
               <background color="-13092808"/>
               <font size="25"/>
               <foreground color="-1"/>
-              <text value="Start"/>
+              <text value="Старт"/>
             </properties>
           </component>
         </children>
       </grid>
       <grid id="370f7" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
         <constraints border-constraint="South"/>
-        <properties/>
-        <border type="none"/>
+        <properties>
+          <background color="-14145496"/>
+        </properties>
+        <border type="bevel-lowered" title="Мат. ожидание и дисперсия">
+          <font size="16" style="2"/>
+          <title-color color="-906176"/>
+        </border>
         <children>
           <component id="51c97" class="javax.swing.JLabel">
             <constraints/>
             <properties>
+              <font size="15"/>
+              <foreground color="-1"/>
               <text value="Мат.ожидание"/>
             </properties>
           </component>
           <component id="bd82e" class="javax.swing.JLabel" binding="matOzhidanie">
             <constraints/>
             <properties>
+              <font size="20"/>
+              <foreground color="-906176"/>
               <text value=""/>
             </properties>
           </component>
@@ -63,12 +72,16 @@
           <component id="f4779" class="javax.swing.JLabel">
             <constraints/>
             <properties>
+              <font size="15"/>
+              <foreground color="-1"/>
               <text value="Дисперсия"/>
             </properties>
           </component>
           <component id="51220" class="javax.swing.JLabel" binding="dizpersiya">
             <constraints/>
             <properties>
+              <font size="20"/>
+              <foreground color="-906176"/>
               <text value=""/>
             </properties>
           </component>

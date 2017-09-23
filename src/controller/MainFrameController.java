@@ -44,40 +44,8 @@ public class MainFrameController {
     }
 
     public void showFrame() {
+        temperatureChart.setTitle("Temperature Chart");
         temperatureChart.setVisible(true);
-    }
-    private void showDialog(){
-        JOptionPane.showMessageDialog(panel1,"Введите значение от 1880 до 2016(включительно)","Warning",JOptionPane.ERROR_MESSAGE);
-        barChart_awt.repaint();
-    }
-
-    private class MyButtonListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (counter>0){
-                System.out.println(counter);
-                barChart_awt.removeAll();
-            }
-
-            if (yearTextField1.getText().equals("Введите год")){
-                showDialog();
-                //yearTextField1.setText("1880"); //ДОДУМАТЬ!
-            }
-            int year = Integer.parseInt(yearTextField1.getText());
-
-            if ((year >= 1880)& (year <=2016)){
-                barChart_awt.createChart(yearTextField1.getText(),stockData,year);
-                barChart_awt.repaint();
-                barChart_awt.setBorder( new BevelBorder(BevelBorder.RAISED));
-                panel1.add(barChart_awt, BorderLayout.CENTER);
-                panel1.revalidate();
-            }else {
-                showDialog();
-            }
-            counter++;
-            matOzhidanie.setText(String.valueOf(getMatOzhidanie(year)));
-            dizpersiya.setText(String.valueOf(getDispersiya(year)));
-        }
     }
 
     public double getMatOzhidanie(int year){
@@ -101,6 +69,34 @@ public class MainFrameController {
         }
         sum=sum/12;
         return sum;
+    }
+    public void enterOrButton(){
+        if (counter>0){
+            barChart_awt.removeAll();
+        }
+        if(yearTextField1.getText().equals("")){
+            showDialog();
+        }
+        if (yearTextField1.getText().equals("Введите год")){
+            showDialog();
+            //yearTextField1.setText("1880"); //ДОДУМАТЬ!
+        }
+        int year = Integer.parseInt(yearTextField1.getText());
+
+        if ((year >= 1880)& (year <=2016)){
+            barChart_awt.createChart(yearTextField1.getText(),stockData,year);
+            barChart_awt.repaint();
+            barChart_awt.setBorder( new BevelBorder(BevelBorder.RAISED));
+            panel1.add(barChart_awt, BorderLayout.CENTER);
+            panel1.revalidate();
+        }else {
+            showDialog();
+        }
+        counter++;
+        if ((year >= 1880)& (year <=2016)) {
+            matOzhidanie.setText(String.valueOf(getMatOzhidanie(year)));
+            dizpersiya.setText(String.valueOf(getDispersiya(year)));
+        }
     }
 
     public double getDispersiya(int year){
@@ -128,6 +124,12 @@ public class MainFrameController {
         return sum;
     }
 
+    private void showDialog(){
+        yearTextField1.setText("1880");
+        JOptionPane.showMessageDialog(panel1,"Введите значение от 1880 до 2016(включительно)","Warning",JOptionPane.ERROR_MESSAGE);
+        barChart_awt.repaint();
+    }
+
     private class MyMouseAdapter extends MouseAdapter {
         @Override
         public void mousePressed(MouseEvent e) {
@@ -139,8 +141,14 @@ public class MainFrameController {
 
     private class MyKeyAdapter extends KeyAdapter {
         @Override
-        public void keyTyped(KeyEvent e) {
+        public void keyReleased(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER){
+                enterOrButton();
+            }
+        }
 
+        @Override
+        public void keyTyped(KeyEvent e) {
             char input = e.getKeyChar();
             if (input<'0' || input > '9'){
                 e.consume();
@@ -150,4 +158,10 @@ public class MainFrameController {
             }
         }
     }
-}
+
+    private class MyButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            enterOrButton();
+    }
+}}
