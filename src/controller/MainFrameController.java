@@ -17,6 +17,8 @@ public class MainFrameController {
     private JPanel panel1;
     private JFormattedTextField yearTextField1;
     private JButton button1;
+    private JLabel matOzhidanie;
+    private JLabel dizpersiya;
 
     public MainFrameController() {
         temperatureChart = new TemperatureChart();
@@ -37,6 +39,8 @@ public class MainFrameController {
         panel1 = temperatureChart.getPanel1();
         yearTextField1 = temperatureChart.getSetYearField();
         button1 = temperatureChart.getStartButton();
+        matOzhidanie = temperatureChart.getMatOzhidanie();
+        dizpersiya= temperatureChart.getDizpersiya();
     }
 
     public void showFrame() {
@@ -57,10 +61,9 @@ public class MainFrameController {
 
             if (yearTextField1.getText().equals("Введите год")){
                 showDialog();
-                yearTextField1.setText("1880"); //ДОДУМАТЬ!
+                //yearTextField1.setText("1880"); //ДОДУМАТЬ!
             }
             int year = Integer.parseInt(yearTextField1.getText());
-            System.out.println(year);
 
             if ((year >= 1880)& (year <=2016)){
                 barChart_awt.createChart(yearTextField1.getText(),stockData,year);
@@ -72,7 +75,57 @@ public class MainFrameController {
                 showDialog();
             }
             counter++;
+            matOzhidanie.setText(String.valueOf(getMatOzhidanie(year)));
+            dizpersiya.setText(String.valueOf(getDispersiya(year)));
         }
+    }
+
+    public double getMatOzhidanie(int year){
+        double sum = 0;
+        double[] arr1 = new double[12];
+        arr1[0] = stockData.getRecordNumber(year-1880).getJan();
+        arr1[1] = stockData.getRecordNumber(year-1880).getFeb();
+        arr1[2] = stockData.getRecordNumber(year-1880).getMar();
+        arr1[3] = stockData.getRecordNumber(year-1880).getApr();
+        arr1[4] = stockData.getRecordNumber(year-1880).getMay();
+        arr1[5] = stockData.getRecordNumber(year-1880).getJun();
+        arr1[6] = stockData.getRecordNumber(year-1880).getJul();
+        arr1[7] = stockData.getRecordNumber(year-1880).getAug();
+        arr1[8] = stockData.getRecordNumber(year-1880).getSep();
+        arr1[9] = stockData.getRecordNumber(year-1880).getOct();
+        arr1[10] = stockData.getRecordNumber(year-1880).getNov();
+        arr1[11] = stockData.getRecordNumber(year-1880).getDec();
+
+        for (int i = 0; i < 12; i++) {
+            sum = sum+arr1[i];
+        }
+        sum=sum/12;
+        return sum;
+    }
+
+    public double getDispersiya(int year){
+        double sum = 0;
+        double[] arr1 = new double[12];
+        arr1[0] = stockData.getRecordNumber(year-1880).getJan();
+        arr1[1] = stockData.getRecordNumber(year-1880).getFeb();
+        arr1[2] = stockData.getRecordNumber(year-1880).getMar();
+        arr1[3] = stockData.getRecordNumber(year-1880).getApr();
+        arr1[4] = stockData.getRecordNumber(year-1880).getMay();
+        arr1[5] = stockData.getRecordNumber(year-1880).getJun();
+        arr1[6] = stockData.getRecordNumber(year-1880).getJul();
+        arr1[7] = stockData.getRecordNumber(year-1880).getAug();
+        arr1[8] = stockData.getRecordNumber(year-1880).getSep();
+        arr1[9] = stockData.getRecordNumber(year-1880).getOct();
+        arr1[10] = stockData.getRecordNumber(year-1880).getNov();
+        arr1[11] = stockData.getRecordNumber(year-1880).getDec();
+
+        for (int i = 0; i < 12; i++) {
+            arr1[i] = Math.pow(arr1[i],2);
+            arr1[i]=arr1[i]/12;
+            sum = sum+arr1[i];
+        }
+        sum = (sum - Math.pow(getMatOzhidanie(year),2));
+        return sum;
     }
 
     private class MyMouseAdapter extends MouseAdapter {

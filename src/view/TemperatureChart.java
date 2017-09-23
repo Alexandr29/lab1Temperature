@@ -7,6 +7,8 @@ public class TemperatureChart extends JFrame{
     private JPanel topPanel;
     private JFormattedTextField setYearField;
     private JButton startButton;
+    private JLabel matOzhidanie;
+    private JLabel dizpersiya;
     private JPanel centerPanel;
 
     public TemperatureChart() {
@@ -22,6 +24,14 @@ public class TemperatureChart extends JFrame{
 
     public JPanel getTopPanel() {
         return topPanel;
+    }
+
+    public JLabel getMatOzhidanie() {
+        return matOzhidanie;
+    }
+
+    public JLabel getDizpersiya() {
+        return dizpersiya;
     }
 
     public JFormattedTextField getSetYearField() {
