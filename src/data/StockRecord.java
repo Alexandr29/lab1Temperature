@@ -1,3 +1,5 @@
+package data;
+
 public class StockRecord {
     private String year;
     private double jan,feb,mar,apr,may,jun,jul,aug,sep,oct,nov,dec;
