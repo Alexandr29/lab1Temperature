@@ -45,6 +45,7 @@ public class MainFrameController {
 
     public void showFrame() {
         temperatureChart.setTitle("Temperature Chart");
+        temperatureChart.setResizable(false);
         temperatureChart.setVisible(true);
     }
 
@@ -146,7 +147,6 @@ public class MainFrameController {
                 enterOrButton();
             }
         }
-
         @Override
         public void keyTyped(KeyEvent e) {
             char input = e.getKeyChar();
